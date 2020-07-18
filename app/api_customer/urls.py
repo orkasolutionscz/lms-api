@@ -1,13 +1,15 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from api_customer.views import CustomerBlockedShowAPIView
+from api_customer import views
 
 
 router = DefaultRouter()
-router.register('customers', CustomerBlockedShowAPIView)
+router.register('vsichni', views.CustomersAllShowAPIView)
+router.register('blokovani', views.CustomerBlockedShowAPIView)
 
-app_name = 'api_customer'
+
+app_name = 'customers'
 
 urlpatterns = [
     path('', include(router.urls))
