@@ -1,11 +1,11 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from api_customer import views
+from api_customer.views import CustomerBlockedShowAPIView
 
 
 router = DefaultRouter()
-router.register('customers', views.CustomerBlockedShowAPIView)
+router.register('customers', CustomerBlockedShowAPIView)
 
 app_name = 'api_customer'
 
