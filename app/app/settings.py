@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +80,8 @@ DATABASES = {
         'NAME': 'lms',
         'USER': 'devroot',
         'PASSWORD': 'fbJWd8pDGM7BQ5',
-        'HOST': 'dbsrv.rapidnet.cz',   # Or an IP Address that your DB is hosted on
+        # 'HOST': 'dbsrv.rapidnet.cz',   # Or an IP Address that your DB is hosted on
+        'HOST': '192.168.43.10',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
