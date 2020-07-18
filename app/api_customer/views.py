@@ -1,5 +1,5 @@
 from .serializers import CustomerSerializer
-from core.models import Customers
+from .models import Customers
 from core.views import BaseLmsApiAttrViewSet
 
 lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platbách za minulá období.'

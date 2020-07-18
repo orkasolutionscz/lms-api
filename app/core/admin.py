@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customers
+from api_customer.models import Customers
 #
 #
 # class CustomersAdmin(BaseUserAdmin):

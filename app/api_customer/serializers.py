@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Customers
+from .models import Customers
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -21,8 +21,8 @@ class CustomerSerializer(serializers.ModelSerializer):
             , 'depositdate_asstring'
             # , 'country'
             , 'sendinvoice'
-            # 'modify_event',
-            # 'create_event',
+            , 'modify_event'
+            , 'create_event'
             , 'skupiny'
             , 'balance'
         )
