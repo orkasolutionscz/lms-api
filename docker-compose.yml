@@ -6,8 +6,12 @@ services:
      context: .
    ports:
      - "8000:8000"
-#   extra_hosts:
-#     - "dockerhost: 192.168.43.10"
+   environment:
+      - DB_HOST=192.168.43.10
+      - DB_NAME=lms
+      - DB_USER=devroot
+      - DB_PASS=fbJWd8pDGM7BQ5
+      - DB_PORT=3306
    volumes:
      - ./app:/app
    command: >

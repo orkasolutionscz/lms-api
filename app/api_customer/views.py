@@ -1,4 +1,3 @@
-from rest_framework import permissions, viewsets
 from .serializers import CustomerSerializer
 from core.models import Customers
 from core.views import BaseLmsApiAttrViewSet
