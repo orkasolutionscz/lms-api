@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from .serializers import NodesSerializer
+from .models import Nodes
+from core.views import BaseLmsApiAttrViewSet
 
-# Create your views here.
+
+class NodeViewSet(BaseLmsApiAttrViewSet):
+    """Manage tags in the database"""
+    queryset = Nodes.objects.all()
+    serializer_class = NodesSerializer

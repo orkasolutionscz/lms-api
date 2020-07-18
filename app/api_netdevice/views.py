@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from .serializers import NetdeviceSerializer
+from .models import Netdevices
+from core.views import BaseLmsApiAttrViewSet
 
-# Create your views here.
+
+class DevicesViewSet(BaseLmsApiAttrViewSet):
+    """Manage tags in the database"""
+    queryset = Netdevices.objects.all()
+    serializer_class = NetdeviceSerializer
