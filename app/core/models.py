@@ -1,6 +1,24 @@
 from django.db import models
-# from django.db.models import Sum
+from django.db.models import Sum
 from datetime import datetime
+
+
+class Cash(models.Model):
+    time = models.IntegerField()
+    type = models.SmallIntegerField()
+    userid = models.IntegerField()
+    value = models.DecimalField(max_digits=9, decimal_places=2)
+    taxid = models.IntegerField()
+    customerid = models.IntegerField()
+    comment = models.TextField()
+    docid = models.IntegerField()
+    itemid = models.SmallIntegerField()
+    importid = models.IntegerField(blank=True, null=True)
+    sourceid = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'cash'
 
 
 class Customers(models.Model):
@@ -54,10 +72,10 @@ class Customers(models.Model):
     #         return '{}, {}'.format(mod_user, datetime.utcfromtimestamp(self.moddate).strftime('%Y-%m-%d %H:%m:%S'))
     #     return ''
 
-    # def balance(self):
-    #     balance = Cash.objects.filter(customerid=self.id).aggregate(Sum('value'))
-    #     return balance['value__sum']
-    #
+    def balance(self):
+        balance = Cash.objects.filter(customerid=self.id).aggregate(Sum('value'))
+        return balance['value__sum']
+
     # def create_event(self):
     #     if self.creatorid > 0:
     #         mod_user = Users.objects.get(id=self.creatorid).name
@@ -71,4 +89,44 @@ class Customers(models.Model):
 
     def __str__(self):
         return 'CID: {} {} {}'.format(self.id, self.lastname, self.name)
+
+
+class Customercontacts(models.Model):
+    customer = models.ForeignKey(Customers, related_name='kontakty', on_delete=models.CASCADE, db_column='customerid')
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=255)
+
+    def __str__(self):
+        return '%s: %s' % (self.name, self.phone)
+
+    class Meta:
+        managed = False
+        db_table = 'customercontacts'
+
+
+class Customergroups(models.Model):
+    name = models.CharField(unique=True, max_length=255)
+    description = models.TextField()
+    members = models.ManyToManyField(Customers, through='customerassignments', through_fields=('customergroups', 'customer'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        managed = False
+        db_table = 'customergroups'
+
+
+class Customerassignments(models.Model):
+    customergroups = models.ForeignKey(Customergroups, on_delete=models.CASCADE, db_column='customergroupid')
+    customer = models.ForeignKey(Customers, related_name='skupiny', on_delete=models.CASCADE, db_column='customerid')
+
+    def __str__(self):
+        return str(self.customergroups)
+
+    class Meta:
+        managed = False
+        db_table = 'customerassignments'
+        # unique_together = (('customergroupid', 'customerid'),)
+
 

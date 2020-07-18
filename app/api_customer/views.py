@@ -7,9 +7,9 @@ lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platb
 
 class CustomersAllShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.filter(deleted=0)
+    queryset = Customers.objects.filter(deleted=0).order_by('id')
 
 
 class CustomerBlockedShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.filter(message=lms_block_msg_user).filter(deleted=0)
+    queryset = Customers.objects.filter(message=lms_block_msg_user).filter(deleted=0).order_by('id')
