@@ -1,0 +1,7 @@
+Django==3.0.8
+djangorestframework==3.11
+django-cors-headers==3.4.0
+django-filter==2.3.0
+# mysqlclient==2.0.1
+netaddr==0.8.0
+# PyMySQL==0.9.3
