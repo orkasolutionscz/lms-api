@@ -4,14 +4,15 @@ from core.views import BaseLmsApiAttrViewSet
 
 
 class NodeViewSet(BaseLmsApiAttrViewSet):
-    """Manage tags in the database"""
+    """Manage Nodes in the database"""
     queryset = Nodes.objects.all()
     serializer_class = NodesSerializer
 
     def get_queryset(self):
         """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
+        Zakladni filtr
+        /Nodes?ownerid=xyz
+        Vrati nam seznam pocitacu pro usera s id xyz
         """
         queryset = Nodes.objects.all().order_by('id')
         owner_id = self.request.query_params.get('ownerid', None)

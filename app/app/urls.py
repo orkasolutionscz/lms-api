@@ -21,5 +21,6 @@ urlpatterns = [
     path('api/customer/', include('api_customer.urls')),
     path('api/netdevice/', include('api_netdevice.urls')),
     path('api/nodes/', include('api_nodes.urls')),
+    path('api/cash/', include('api_cash.urls')),
 
 ]

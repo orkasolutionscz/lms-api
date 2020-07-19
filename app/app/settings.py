@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'api_customer',
     'api_nodes',
     'api_netdevice',
+    'api_cash',
+    'api_user',
 ]
 
 MIDDLEWARE = [

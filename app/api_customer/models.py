@@ -1,7 +1,8 @@
 from django.db import models
 from django.db.models import Sum
 from datetime import datetime
-from core.models import Users, Cash
+from api_user.models import Users
+from api_cash.models import Cash
 
 
 class Customers(models.Model):

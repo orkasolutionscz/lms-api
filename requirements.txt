@@ -6,4 +6,5 @@ mysqlclient==2.0.1
 netaddr==0.8.0
 PyMySQL==0.9.3
 flake8
+django-url-filter
 

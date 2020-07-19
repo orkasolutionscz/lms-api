@@ -5,7 +5,7 @@ from api_customer import views
 
 
 router = DefaultRouter()
-router.register('customers', views.CustomersAllShowAPIView, basename='vsichni')
+router.register('all', views.CustomersAllShowAPIView, basename='vsichni')
 router.register('blocked', views.CustomerBlockedShowAPIView, basename='blocked')
 
 
