@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import Sum
 from datetime import datetime
-from api_user.models import Users
+from api_user.models import LmsUsers
 from api_cash.models import Cash
 
 
@@ -52,7 +52,7 @@ class Customers(models.Model):
 
     def modify_event(self):
         if self.modid > 0:
-            mod_user = Users.objects.get(id=self.modid).name
+            mod_user = LmsUsers.objects.get(id=self.modid).name
             return '{}, {}'.format(mod_user, datetime.utcfromtimestamp(self.moddate).strftime('%Y-%m-%d %H:%m:%S'))
         return ''
 
@@ -62,7 +62,7 @@ class Customers(models.Model):
 
     def create_event(self):
         if self.creatorid > 0:
-            mod_user = Users.objects.get(id=self.creatorid).name
+            mod_user = LmsUsers.objects.get(id=self.creatorid).name
             return '{}, {}'.format(mod_user, datetime.utcfromtimestamp(self.creationdate).strftime('%Y-%m-%d %H:%m:%S'))
         return ''
 

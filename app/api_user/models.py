@@ -10,7 +10,7 @@ class UserGroup(models.Model):
         db_table = 'user_group'
 
 
-class Users(models.Model):
+class LmsUsers(models.Model):
     login = models.CharField(unique=True, max_length=32)
     name = models.CharField(max_length=64)
     email = models.CharField(max_length=255)

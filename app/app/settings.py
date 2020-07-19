@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'api_netdevice',
     'api_cash',
     'api_user',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'core.User'
