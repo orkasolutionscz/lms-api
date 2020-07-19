@@ -5,7 +5,7 @@ from .views import CashViewSet
 
 
 router = DefaultRouter()
-router.register('Cash', CashViewSet, basename='all_cash')
+router.register('all', CashViewSet, basename='all_cash')
 
 
 app_name = 'cash'
