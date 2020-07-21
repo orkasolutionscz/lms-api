@@ -5,8 +5,11 @@ from url_filter.integrations.drf import DjangoFilterBackend
 
 
 class CashViewSet(BaseLmsApiAttrViewSet):
-    """Manage Nodes in the database"""
-    queryset = Cash.objects.all()
+    """
+    - Vybirame jen typ 4 coz jsou platby z Banky
+    - Setridime nenovejsim datem na zacatek
+    """
+    queryset = Cash.objects.all().filter(type=4).order_by('-time')
     serializer_class = CashSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['customerid', 'comment', 'value']

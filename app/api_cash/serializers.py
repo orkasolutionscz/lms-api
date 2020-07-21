@@ -6,4 +6,10 @@ class CashSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cash
-        fields = '__all__'
+        fields = (
+            'id'
+            , 'value'
+            , 'comment'
+            , 'customerid'
+            , 'platba_datum'
+        )
