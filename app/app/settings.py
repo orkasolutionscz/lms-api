@@ -124,7 +124,7 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'DEFAULT_PAGINATION_CLASS': 'core.pagination.CustomLimitPagination',
+    # 'DEFAULT_PAGINATION_CLASS': 'core.pagination.CustomLimitPagination',
 
     # 'DEFAULT_PERMISSION_CLASSES': [
     #     # 'rest_framework.permissions.IsAuthenticated',
