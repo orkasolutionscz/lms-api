@@ -14,6 +14,7 @@ class CashViewSet(BaseLmsApiAttrViewSet):
     serializer_class = CashSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = ['customerid', 'comment', 'value']
+    ordering_fields = ['customerid', 'value', 'platba_datum']
 
 
 class CashViewSetPages(BaseLmsApiAttrViewSet):
