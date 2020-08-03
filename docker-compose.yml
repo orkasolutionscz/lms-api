@@ -12,11 +12,9 @@ services:
       - DB_USER=devroot
       - DB_PASS=fbJWd8pDGM7BQ5
       - DB_PORT=3306
-      - DB_RB_NAME=rbackup
    volumes:
      - ./app:/app
    command: >
      sh -c "python manage.py migrate &&
-            python manage.py migrate --database=rbackup &&
             python manage.py runserver 0.0.0.0:8000"
 
