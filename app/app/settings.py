@@ -90,14 +90,23 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
         'PASSWORD': os.environ.get('DB_PASS'),
-
-
-        # 'HOST': 'dbsrv.rapidnet.cz',   # Or an IP Address that your DB is hosted on
         'PORT': os.environ.get('DB_PORT'),
         'OPTIONS': {
             'sql_mode': 'traditional',
         }
     },
+    'rbackup': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_RB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
+    },
+
 }
 
 
