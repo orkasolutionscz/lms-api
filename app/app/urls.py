@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/netdevice/', include('api_netdevice.urls')),
     path('api/nodes/', include('api_nodes.urls')),
     path('api/cash/', include('api_cash.urls')),
+    path('api/backups/', include('api_rbbackup.urls')),
 
 ]

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'api_netdevice',
     'api_cash',
     'api_user',
+    'api_rbbackup',
 ]
 
 MIDDLEWARE = [
