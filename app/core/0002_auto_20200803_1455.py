@@ -13,8 +13,18 @@ def forwards(apps, schema_editor):
 
     NewModel = apps.get_model('api_rbbackup', 'Routers')
     NewModel.objects.bulk_create(
-        NewModel(new_attribute=old_object.old_attribute)
-        for old_object in OldModel.objects.all()
+        NewModel(
+            id=old_object.id,
+            addr=old_object.addr,
+            port=old_object.port,
+            identity=old_object.identity,
+            created=old_object.created,
+            modify=old_object.modify,
+            lastbackup=old_object.lastbackup,
+            sleeptime=old_object.sleeptime
+
+        )
+        for old_object in OldModel.objects.using('rbackup').all()
     )
 
 
