@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'api_rbbackup',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,6 +62,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'app.urls'
+
+FIXTURE_DIRS = BASE_DIR
 
 TEMPLATES = [
     {

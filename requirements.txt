@@ -7,6 +7,3 @@ netaddr
 PyMySQL
 flake8
 django-url-filter
-celery
-django-celery
-

@@ -1,6 +1,13 @@
 from django.db import models
 
 
+class RoutersType(models.Model):
+    type = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'routerstype'
+
+
 class Routers(models.Model):
     addr = models.CharField(max_length=255)
     port = models.PositiveSmallIntegerField(blank=True, null=True)
@@ -9,6 +16,8 @@ class Routers(models.Model):
     modify = models.DateTimeField(auto_now=True, blank=True, null=True)
     lastbackup = models.DateTimeField(blank=True, null=True)
     sleeptime = models.SmallIntegerField()
+    isActivated = models.BooleanField(default=False)
+    devtype = models.ForeignKey(RoutersType, on_delete=models.CASCADE, default='1')
 
     class Meta:
         db_table = 'routers'
