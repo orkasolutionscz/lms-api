@@ -5,7 +5,7 @@ from .views import DevicesViewSet
 
 
 router = DefaultRouter()
-router.register('Netdevices', DevicesViewSet, basename='all_devices')
+router.register('all', DevicesViewSet, basename='all_devices')
 
 
 app_name = 'netdevices'
