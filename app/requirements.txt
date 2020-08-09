@@ -5,5 +5,7 @@ django-filter
 mysqlclient
 netaddr
 PyMySQL
-flake8
 django-url-filter
+celery
+redis
+flower
