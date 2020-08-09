@@ -1,10 +1,10 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
     build: ./app
     ports:
-      - "8000:8000"
+      - 8000:8000
     environment:
       - DB_HOST=192.168.43.10
       - DB_NAME=lms
@@ -49,7 +49,7 @@ services:
 
   dashboard:
     build: ./app
-    command:  flower -A app --port=5555 --broker=redis://redis:6379/0
+    command: flower -A app --port=5555 --broker=redis://redis:6379/0
     ports:
       - 5555:5555
     environment:
