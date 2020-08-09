@@ -1,9 +1,9 @@
-Django==3.0.5
-celery==4.4.1
-redis==3.4.1
-flower==0.9.3
-pytest==5.4.1
-pytest-django==3.8.0
+Django
+celery
+redis
+flower
+pytest
+pytest-django
 djangorestframework
 django-cors-headers
 django-filter

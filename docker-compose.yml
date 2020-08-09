@@ -47,7 +47,7 @@ services:
     depends_on:
       - redis
 
-  dashboard:
+  dashboardn:
     build: ./app
     command: flower -A app --port=5555 --broker=redis://redis:6379/0
     ports:
