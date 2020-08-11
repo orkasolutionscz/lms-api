@@ -5,6 +5,7 @@ from django.core.management import call_command
 @shared_task
 def sample_task():
     print("The sample task just ran.")
+    return 'Pokus The sample task just ran.'
 
 # @shared_task
 # def send_email_report():
