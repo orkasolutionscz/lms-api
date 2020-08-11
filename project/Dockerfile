@@ -9,9 +9,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
-RUN apk add --update --no-cache mariadb-client
-RUN apk add --update --no-cache --virtual .tmp-build-deps \
-      gcc libc-dev linux-headers mariadb-dev
+RUN apk add --update --no-cache \
+      mariadb-client gcc libc-dev linux-headers mariadb-dev
 
 # install dependencies
 RUN pip install --upgrade pip

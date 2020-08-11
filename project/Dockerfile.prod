@@ -13,7 +13,7 @@ ENV PYTHONUNBUFFERED 1
 
 # nainstalovat potrebne knihovny
 RUN apk update \
-    && apk add mariadb-client gcc python3-dev libc-dev linux-headers mariadb-dev musl-dev
+    && apk add mariadb-client gcc libc-dev mariadb-dev musl-dev
 
 #Lint
 RUN pip install --upgrade pip
