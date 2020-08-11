@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 from celery.schedules import crontab
 
-import app.tasks
+import core.tasks
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -43,14 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-     'corsheaders',
-    'core',
-    'api_customer',
-    'api_nodes',
-    'api_netdevice',
-    'api_cash',
-    'api_user',
-    'api_rbbackup',
+    'corsheaders',
+    'api_customer.apps.ApiConfig',
+    'api_nodes.apps.ApiNodesConfig',
+    'api_netdevice.apps.ApiNetdeviceConfig',
+    'api_cash.apps.ApiCashConfig',
+    'api_user.apps.ApiUserConfig',
+    'api_rbbackup.apps.ApiRbbackupConfig',
     'celery',
 ]
 
@@ -66,7 +65,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'core.urls'
 
 FIXTURE_DIRS = BASE_DIR
 
@@ -86,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -164,7 +163,6 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 STATIC_URL = "/staticfiles/"
 
-# AUTH_USER_MODEL = 'core.User'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -179,7 +177,7 @@ CELERY_RESULT_BACKEND = "redis://redis:6379"
 
 CELERY_BEAT_SCHEDULE = {
     "sample_task": {
-        "task": "app.tasks.sample_task",
+        "task": "core.tasks.sample_task",
         "schedule": crontab(minute="*/1"),
     },
 }

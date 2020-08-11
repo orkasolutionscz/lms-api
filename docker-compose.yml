@@ -18,7 +18,7 @@ services:
 
   celery:
     build: ./app
-    command: celery -A app worker -l info
+    command: celery -A core worker -l info
     volumes:
       - ./app/:/usr/src/app/
     env_file:
@@ -28,7 +28,7 @@ services:
 
   celery-beat:
     build: ./app
-    command: celery -A app beat -l info
+    command: celery -A core beat -l info
     volumes:
       - ./app/:/usr/src/app/
     env_file:
@@ -38,7 +38,7 @@ services:
 
   dashboard:
     build: ./app
-    command:  flower -A app --port=5555 --broker=redis://redis:6379/0
+    command:  flower -A core --port=5555 --broker=redis://redis:6379/0
     ports:
         - 5555:5555
     env_file:

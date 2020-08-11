@@ -22,7 +22,7 @@ RUN pip install -r requirements.txt
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
 # copy project
-COPY ./app/ /usr/src/app/
+COPY . /usr/src/app/
 
 RUN adduser -D user
 USER user
