@@ -1,14 +1,8 @@
 from rest_framework import serializers
-from .models import LmsUsers, UserGroup
+from .models import LmsUsers
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = LmsUsers
-        fields = ('__all__')
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserGroup
         fields = ('__all__')
