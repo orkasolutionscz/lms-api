@@ -91,7 +91,8 @@ class Customercontacts(models.Model):
 class Customergroups(models.Model):
     name = models.CharField(unique=True, max_length=255)
     description = models.TextField()
-    members = models.ManyToManyField(Customers, through='customerassignments', through_fields=('customergroups', 'customer'))
+    members = models.ManyToManyField(Customers, through='customerassignments',
+                                     through_fields=('customergroups', 'customer'))
 
     def __str__(self):
         return self.name
@@ -112,4 +113,3 @@ class Customerassignments(models.Model):
         managed = False
         db_table = 'customerassignments'
         # unique_together = (('customergroupid', 'customerid'),)
-

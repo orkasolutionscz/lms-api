@@ -9,10 +9,10 @@ class CustomLimitPagination(pagination.PageNumberPagination):
 
     def get_paginated_response(self, data):
         return Response(OrderedDict([
-             ('limit', self.page_size),
-             ('count', self.page.paginator.count),
-             ('page', self.page.number),
-             ('next', self.get_next_link()),
-             ('previous', self.get_previous_link()),
-             ('results', data)
-         ]))
+            ('limit', self.page_size),
+            ('count', self.page.paginator.count),
+            ('page', self.page.number),
+            ('next', self.get_next_link()),
+            ('previous', self.get_previous_link()),
+            ('results', data)
+        ]))

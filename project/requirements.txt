@@ -11,3 +11,5 @@ django-url-filter
 mysqlclient
 netaddr
 PyMySQL
+django-celery-results
+gunicorn==20.0.4

@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/nodes/', include('api_nodes.urls')),
     path('api/cash/', include('api_cash.urls')),
     path('api/backups/', include('api_rbbackup.urls')),
+    path('api/users/', include('api_user.urls')),
 
 ]

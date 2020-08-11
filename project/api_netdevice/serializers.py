@@ -3,21 +3,18 @@ from .models import Netdevices, Hwtypes, Netcontypes, Nmsgroups
 
 
 class NetContypeSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Netcontypes
         fields = '__all__'
 
 
 class HwtypeSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Hwtypes
         fields = '__all__'
 
 
 class NmsGroupSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Nmsgroups
         fields = '__all__'
@@ -31,4 +28,3 @@ class NetdeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Netdevices
         fields = '__all__'
-

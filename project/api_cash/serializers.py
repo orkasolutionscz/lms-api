@@ -3,13 +3,8 @@ from .models import Cash
 
 
 class CashSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Cash
         fields = (
-            'id'
-            , 'value'
-            , 'comment'
-            , 'customerid'
-            , 'platba_datum'
+            'id', 'value', 'comment', 'customerid', 'platba_datum'
         )

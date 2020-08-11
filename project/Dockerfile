@@ -24,8 +24,5 @@ COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 # copy project
 COPY . /usr/src/app/
 
-RUN adduser -D user
-USER user
-
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

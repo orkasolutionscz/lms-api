@@ -1,8 +1,13 @@
-from rest_framework import generics
+from core.views import BaseLmsApiAttrViewSet
+from .models import LmsUsers, UserGroup
+from .serializers import UserSerializer, UserGroupSerializer
 
-from .serializers import UserSerializer
 
-
-class CreateUserView(generics.CreateAPIView):
-    """Create a new user in the system"""
+class UserViewSet(BaseLmsApiAttrViewSet):
+    queryset = LmsUsers.objects.all().order_by('name')
     serializer_class = UserSerializer
+
+
+class UserGroupViewSet(BaseLmsApiAttrViewSet):
+    model = UserGroup
+    serializer_class = UserGroupSerializer

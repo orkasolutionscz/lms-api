@@ -3,11 +3,9 @@ from rest_framework.routers import DefaultRouter
 
 from api_customer import views
 
-
 router = DefaultRouter()
 router.register('all', views.CustomersAllShowAPIView, basename='vsichni')
 router.register('blocked', views.CustomerBlockedShowAPIView, basename='blocked')
-
 
 app_name = 'customers'
 

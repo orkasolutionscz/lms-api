@@ -7,4 +7,3 @@ class NodeViewSet(BaseLmsApiAttrViewSet):
     """Manage Nodes in the database"""
     queryset = Nodes.objects.all()
     serializer_class = NodesSerializer
-

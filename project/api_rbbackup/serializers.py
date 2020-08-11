@@ -7,6 +7,4 @@ class RoutersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Routers
         fields = ('__all__')
-        read_only_fields = ('created',)
-
-
+        read_only_fields = ('created', )
