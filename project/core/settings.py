@@ -178,10 +178,10 @@ CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = 'django-db'
 
 CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
-        "task": "core.tasks.sample_task",
-        "schedule": crontab(minute="*/1"),
-    },
+    # "sample_task": {
+    #     "task": "core.tasks.sample_task",
+    #     "schedule": crontab(minute="*/1"),
+    # },
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
