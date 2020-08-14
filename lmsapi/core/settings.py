@@ -103,7 +103,19 @@ DATABASES = {
         'OPTIONS': {
             'sql_mode': 'traditional',
         }
+    },
+    'rbackup': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.environ.get('DB_HOST'),
+        'NAME': 'rbackup',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
+        'PORT': os.environ.get('DB_PORT'),
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }
     }
+
 }
 
 
