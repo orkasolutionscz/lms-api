@@ -4,6 +4,9 @@ from django.db import models
 class RoutersType(models.Model):
     type = models.CharField(max_length=255)
 
+    class Meta:
+        db_table = 'routerstype'
+
 
 class Routers(models.Model):
     addr = models.CharField(max_length=255)
@@ -18,3 +21,6 @@ class Routers(models.Model):
 
     def __str__(self):
         return '{}:{}'.format(self.addr, self.port)
+
+    class Meta:
+        db_table = 'routers'
