@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'api_rbbackup.apps.ApiRbbackupConfig',
     'celery',
     'django_celery_results',
+    'core',
 ]
 
 
@@ -179,10 +180,10 @@ CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = 'django-db'
 
 CELERY_BEAT_SCHEDULE = {
-    # "sample_task": {
-    #     "task": "core.tasks.sample_task",
-    #     "schedule": crontab(minute="*/1"),
-    # },
+    "export_pohoda_task": {
+        "task": "core.tasks.export_pohoda_adresy_add",
+        "schedule": crontab(minute="*/1"),
+    },
 }
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
