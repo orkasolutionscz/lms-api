@@ -9,5 +9,5 @@ def sample_task():
 
 @shared_task
 def export_pohoda_adresy_add():
-     print("Export adres do pohody ran.")
-     # call_command("email_report", )
+    print("Export adres do pohody ran.")
+    # call_command("email_report", )
