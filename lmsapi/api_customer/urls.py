@@ -6,6 +6,7 @@ from api_customer import views
 router = DefaultRouter()
 router.register('all', views.CustomersAllShowAPIView, basename='vsichni')
 router.register('blocked', views.CustomerBlockedShowAPIView, basename='blocked')
+router.register('pages', views.CustomersPagesShowAPIView, basename='pages_customers')
 
 app_name = 'customers'
 
