@@ -44,6 +44,7 @@ class Customers(models.Model):
     sendinvoice = models.BooleanField()
     lease_antena = models.BooleanField(default=False)
     lease_iptv = models.BooleanField(default=False)
+    is_executed = models.BooleanField(default=False)
 
     class Meta:
         managed = False

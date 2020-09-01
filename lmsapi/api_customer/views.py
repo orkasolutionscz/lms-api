@@ -18,6 +18,12 @@ class CustomerBlockedShowAPIView(BaseLmsApiAttrViewSet):
     pagination_class = CustomLimitPagination
 
 
+class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
+    serializer_class = CustomerSerializer
+    queryset = Customers.objects.filter(is_executed=1).filter(deleted=0).order_by('id')
+    pagination_class = CustomLimitPagination
+
+
 class CustomersPagesShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(deleted=0).order_by('id')

@@ -13,5 +13,5 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'full_name', 'status', 'kontakty', 'message', 'deposit',
             'depositdate_asstring', 'sendinvoice', 'modify_event', 'create_event',
-            'skupiny', 'balance'
+            'skupiny', 'balance', 'is_executed'
         )
