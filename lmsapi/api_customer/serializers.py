@@ -11,7 +11,11 @@ class CustomerSerializer(serializers.ModelSerializer):
         # fields = '__all__'
 
         fields = (
-            'id', 'full_name', 'status', 'kontakty', 'message', 'deposit',
+            'id', 'full_name', 'status', 'kontakty',
+            'address', 'zip', 'city',
+            'info', 'notes',
+            'message', 'deposit',
             'depositdate_asstring', 'sendinvoice', 'modify_event', 'create_event',
-            'skupiny', 'balance', 'is_executed'
+            'skupiny', 'balance',
+            'is_executed', 'lease_antena', 'lease_iptv'
         )
