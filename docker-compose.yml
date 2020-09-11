@@ -3,47 +3,42 @@ version: '3.7'
 services:
   web:
     build: lmsapi
+    expose:
+      - 8000
+    env_file:
+      - ./.env.dev
+    volumes:
+      - .static_volume:/code/staticfiles
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build: nginx
+    restart: always
     ports:
-      - 8000:8000
-    env_file:
-      - ./.env.dev
+      - 443:443
+      - 80:80
     volumes:
-      - ./lmsapi/:/usr/src/app/
-    command: python manage.py runserver 0.0.0.0:8000
+      - static_volume:/code/staticfiles
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     depends_on:
-      - redis
-
-  redis:
-    image: redis:alpine
-
-  celery:
-    build: lmsapi
-    command: celery -A core worker -l info
+      - web
+  nginx-proxy-letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    env_file:
+      - .env.dev
     volumes:
-      - ./lmsapi/:/usr/src/app/
-    env_file:
-      - ./.env.dev
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
     depends_on:
-      - redis
+      - nginx-proxy
 
-  celery-beat:
-    build: lmsapi
-    command: celery -A core beat -l info
-    volumes:
-      - ./lmsapi/:/usr/src/app/
-    env_file:
-      - ./.env.dev
-    depends_on:
-      - redis
-
-  dashboard:
-    build: lmsapi
-    command:  flower -A core --port=5555 --broker=redis://redis:6379/0
-    ports:
-        - 5555:5555
-    env_file:
-      - ./.env.dev
-    depends_on:
-        - web
-        - redis
-        - celery
+volumes:
+  static_volume:
+  certs:
+  html:
+  vhost:
