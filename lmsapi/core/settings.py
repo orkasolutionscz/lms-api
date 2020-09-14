@@ -173,7 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # gstatic is the folder where global static files stay (they are read directly in development)
 # on development, we wont use 'static' since it is where 'collectstatic' stores all static files for production
 # this constant tells collect static to also copy gstatic content to static folder
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "gstatic")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "gstatic")]
 
 
 CORS_ORIGIN_ALLOW_ALL = True
