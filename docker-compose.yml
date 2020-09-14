@@ -9,7 +9,6 @@ services:
       - ./.env
     volumes:
       - ./lmsapi/:/usr/src/app/
-    command: python manage.py runserver 0.0.0.0:80
 
 
 networks:
