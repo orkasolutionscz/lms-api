@@ -3,6 +3,7 @@ MAINTAINER ORKA Solutions
 
 # set work directory
 WORKDIR /usr/src/app
+RUN mkdir static media gstatic
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
