@@ -1,4 +1,8 @@
-version: '3.7'
+version: '3'
+
+volumes:
+  static-volume:
+  media-volume:
 
 services:
   web:
