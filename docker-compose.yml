@@ -6,7 +6,7 @@ services:
     expose:
       - 80
     env_file:
-      - ./.env.dev
+      - ./.env
     volumes:
       - ./lmsapi/:/usr/src/app/
     command: python manage.py runserver 0.0.0.0:80
