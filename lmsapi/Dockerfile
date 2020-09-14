@@ -1,9 +1,13 @@
 FROM python:3.8.2-alpine
 MAINTAINER ORKA Solutions
+ENV APP_HOME /usr/src/app
 
+RUN mkdir -p $APP_HOME
 # set work directory
-WORKDIR /usr/src/app
-RUN mkdir static media gstatic
+WORKDIR $APP_HOME
+RUN mkdir static
+RUN mkdir media
+RUN mkdir gstatic
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -15,14 +19,14 @@ RUN apk add --update --no-cache \
 
 # install dependencies
 RUN pip install --upgrade pip
-COPY ./requirements.txt /usr/src/app/requirements.txt
+COPY ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+COPY ./entrypoint.sh ./entrypoint.sh
 
 # copy lmsapi
-COPY . /usr/src/app/
+COPY ./ ./
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
