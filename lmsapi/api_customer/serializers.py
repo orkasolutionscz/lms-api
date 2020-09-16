@@ -17,5 +17,5 @@ class CustomerSerializer(serializers.ModelSerializer):
             'message', 'deposit',
             'depositdate_asstring', 'sendinvoice', 'modify_event', 'create_event',
             'skupiny', 'balance',
-            'is_executed', 'lease_antena', 'lease_iptv'
+            'is_executed', 'lease_antena', 'lease_iptv', 'block_state'
         )

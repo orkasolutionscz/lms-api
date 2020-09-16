@@ -45,6 +45,7 @@ class Customers(models.Model):
     lease_antena = models.BooleanField(default=False)
     lease_iptv = models.BooleanField(default=False)
     is_executed = models.BooleanField(default=False)
+    block_state = models.IntegerField()
 
     class Meta:
         managed = False
