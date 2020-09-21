@@ -6,9 +6,10 @@ from core.pagination import CustomLimitPagination
 
 class NodeViewSet(BaseLmsApiAttrViewSet):
     """Manage Nodes in the database"""
-    queryset = Nodes.objects.all()
+    queryset = Nodes.objects.all().order_by('ownerid')
     serializer_class = NodesSerializer
     pagination_class = CustomLimitPagination
+    filter_fields = ['ownerid']
 
 
 class MacsViewSet(BaseLmsApiAttrViewSet):
