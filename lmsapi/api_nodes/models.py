@@ -30,3 +30,14 @@ class Nodes(models.Model):
     class Meta:
         managed = False
         db_table = 'nodes'
+
+
+class Macs(models.Model):
+    mac = models.CharField(max_length=17)
+    nodeid = models.ForeignKey('Nodes', models.DO_NOTHING, db_column='nodeid')
+
+    class Meta:
+        managed = False
+        db_table = 'macs'
+        unique_together = (('mac', 'nodeid'),)
+
