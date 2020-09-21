@@ -3,6 +3,7 @@ from .models import Nodes, Macs
 
 
 class NodesSerializer(serializers.ModelSerializer):
+    nodesmacs = serializers.StringRelatedField(many=True)
     class Meta:
         model = Nodes
         fields = '__all__'

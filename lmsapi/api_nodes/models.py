@@ -34,7 +34,10 @@ class Nodes(models.Model):
 
 class Macs(models.Model):
     mac = models.CharField(max_length=17)
-    nodeid = models.ForeignKey('Nodes', models.DO_NOTHING, db_column='nodeid')
+    nodeid = models.ForeignKey(Nodes, related_name='nodesmacs', on_delete=models.DO_NOTHING, db_column='nodeid')
+
+    def __str__(self):
+        return self.mac
 
     class Meta:
         managed = False

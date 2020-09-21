@@ -50,6 +50,9 @@ class Customers(models.Model):
         managed = False
         db_table = 'customers'
 
+    def __str__(self):
+        return 'CID: {} {} {}'.format(self.id, self.lastname, self.name)
+
     def full_name(self):
         return '{} {}'.format(self.lastname, self.name)
 
@@ -73,9 +76,6 @@ class Customers(models.Model):
         if self.depositdate:
             return datetime.utcfromtimestamp(self.depositdate).strftime('%Y-%m-%d')
         return ''
-
-    def __str__(self):
-        return 'CID: {} {} {}'.format(self.id, self.lastname, self.name)
 
 
 class Customercontacts(models.Model):
