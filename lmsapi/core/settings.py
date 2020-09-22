@@ -24,12 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", default="12354897")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1").split(" ")
 
 
 # Application definition
@@ -96,11 +96,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': os.environ.get('DB_HOST'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASS'),
-        'PORT': os.environ.get('DB_PORT'),
+        'HOST': os.environ.get('DB_HOST', default='192.168.43.10'),
+        'NAME': os.environ.get('DB_NAME', default='lms'),
+        'USER': os.environ.get('DB_USER', default='devroot'),
+        'PASSWORD': os.environ.get('DB_PASS', default='fbJWd8pDGM7BQ5'),
+        'PORT': os.environ.get('DB_PORT', default=3306),
         'OPTIONS': {
             'sql_mode': 'traditional',
         }
@@ -163,7 +163,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 # STATIC_URL = '/static/'
-STATIC_URL = "/staticfiles/"
+# STATIC_URL = "/staticfiles/"
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# gstatic is the folder where global static files stay (they are read directly in development)
+# on development, we wont use 'static' since it is where 'collectstatic' stores all static files for production
+# this constant tells collect static to also copy gstatic content to static folder
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "gstatic")]
 
 
 CORS_ORIGIN_ALLOW_ALL = True

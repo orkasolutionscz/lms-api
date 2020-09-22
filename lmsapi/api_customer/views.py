@@ -14,7 +14,7 @@ class CustomersAllShowAPIView(BaseLmsApiAttrViewSet):
 
 class CustomerBlockedShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.filter(message=lms_block_msg_user).filter(deleted=0).order_by('id')
+    queryset = Customers.objects.filter(message=lms_block_msg_user).filter(deleted=0).filter(is_executed=0).order_by('id')
     pagination_class = CustomLimitPagination
 
 
