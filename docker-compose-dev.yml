@@ -1,0 +1,23 @@
+version: '3'
+
+volumes:
+  static-volume:
+  media-volume:
+
+services:
+  web:
+    build: lmsapi
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.dev.env
+    volumes:
+      - ./lmsapi/:/usr/src/app/
+      - static-volume:/usr/src/app/static
+      - media-volume:/usr/src/app/media
+
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

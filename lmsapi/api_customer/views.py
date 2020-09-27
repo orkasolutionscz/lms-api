@@ -1,5 +1,5 @@
-from .serializers import CustomerSerializer
-from .models import Customers
+from .serializers import CustomerSerializer, AssignmentsSerializer
+from .models import Customers, Assignments
 from core.views import BaseLmsApiAttrViewSet
 from core.pagination import CustomLimitPagination
 
@@ -26,15 +26,17 @@ class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
 
 class CustomerDluhyShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.raw('select * from customers where is_executed=0 and deleted=0')
-        # .filter(is_executed=0)\
-        # .filter(balance__lte=0) \
-        # .filter(deleted=0)\
-        # .order_by('balance')
+    queryset = Customers.objects.raw('select * from customers where is_executed=0 and deleted=0 and balance < 0')
     pagination_class = CustomLimitPagination
 
 
 class CustomersPagesShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(deleted=0).order_by('id')
+    pagination_class = CustomLimitPagination
+
+
+class AssignmentsPagesShowAPIView(BaseLmsApiAttrViewSet):
+    serializer_class = AssignmentsSerializer
+    queryset = Assignments.objects.all()
     pagination_class = CustomLimitPagination
