@@ -24,6 +24,16 @@ class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
     pagination_class = CustomLimitPagination
 
 
+class CustomerDluhyShowAPIView(BaseLmsApiAttrViewSet):
+    serializer_class = CustomerSerializer
+    queryset = Customers.objects\
+        .filter(is_executed=0)\
+        .filter(balance__lte=0) \
+        .filter(deleted=0)\
+        .order_by('balance')
+    pagination_class = CustomLimitPagination
+
+
 class CustomersPagesShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(deleted=0).order_by('id')
