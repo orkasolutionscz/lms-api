@@ -105,6 +105,10 @@ class Customers(models.Model):
         balance = Cash.objects.filter(customerid=self.id).aggregate(Sum('value'))
         return balance['value__sum']
 
+    def tariffssum(self):
+        tarsum = Assignments.objects.filter(customerid=self.id).aggregate(Sum('tariff_value'))
+        return tarsum['tariff_value__sum']
+
     def create_event(self):
         if self.creatorid > 0:
             mod_user = LmsUsers.objects.get(id=self.creatorid).name
@@ -118,11 +122,9 @@ class Customers(models.Model):
 
 
 class Assignments(models.Model):
-    tariff = models.ForeignKey(Tariffs, on_delete=models.CASCADE, db_column='tariffid')
-    # tariffid = models.IntegerField()
+    tariffid = models.IntegerField()
     liabilityid = models.IntegerField()
-    customer = models.ForeignKey(Customers, related_name='custtariffs', on_delete=models.CASCADE, db_column='customerid')
-    # customerid = models.IntegerField()
+    customerid = models.IntegerField()
     period = models.SmallIntegerField()
     at = models.IntegerField()
     datefrom = models.IntegerField()
@@ -133,6 +135,10 @@ class Assignments(models.Model):
     discount = models.DecimalField(max_digits=4, decimal_places=2)
     paytype = models.SmallIntegerField(blank=True, null=True)
     numberplanid = models.IntegerField(blank=True, null=True)
+
+    def tariff_value(self):
+        tar = Tariffs.objects.get(id=self.tariffid).value
+        return tar
 
     def __str__(self):
         return '%s: %s' % (self.tariff.name, self.tariff.value)
