@@ -26,7 +26,7 @@ class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
 
 class CustomerDluhyShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.raw('select * from customers')
+    queryset = Customers.objects.raw('select * from customers where is_executed=0 and deleted=0')
         # .filter(is_executed=0)\
         # .filter(balance__lte=0) \
         # .filter(deleted=0)\
