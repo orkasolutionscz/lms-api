@@ -26,11 +26,11 @@ class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
 
 class CustomerDluhyShowAPIView(BaseLmsApiAttrViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects\
-        .filter(is_executed=0)\
-        .filter(balance__lte=0) \
-        .filter(deleted=0)\
-        .order_by('balance')
+    queryset = Customers.objects.raw('select * from customers')
+        # .filter(is_executed=0)\
+        # .filter(balance__lte=0) \
+        # .filter(deleted=0)\
+        # .order_by('balance')
     pagination_class = CustomLimitPagination
 
 
