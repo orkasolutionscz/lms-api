@@ -124,8 +124,8 @@ class Customers(models.Model):
 class Assignments(models.Model):
     tariffid = models.IntegerField()
     liabilityid = models.IntegerField()
-    customer = models.ForeignKey(Customers, related_name='cust_tariffs', on_delete=models.CASCADE, db_column='customerid')
-    customerid = models.IntegerField()
+    customer = models.ForeignKey(Customers, related_name='custtariffs', on_delete=models.CASCADE, db_column='customerid')
+    # customerid = models.IntegerField()
     period = models.SmallIntegerField()
     at = models.IntegerField()
     datefrom = models.IntegerField()
