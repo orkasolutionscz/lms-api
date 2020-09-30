@@ -5,7 +5,7 @@ from .models import Customers, Assignments
 class AssignmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Assignments
-        fields = ('customer', 'tariff', 'tariffid', 'customerid', 'datefrom', 'dateto', 'invoice', 'tariff_value')
+        fields = ('customer', 'tariff', 'datefrom', 'dateto', 'invoice', 'tariff_value')
         depth = 1
 
 

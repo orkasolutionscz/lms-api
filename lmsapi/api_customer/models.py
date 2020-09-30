@@ -107,6 +107,7 @@ class Customers(models.Model):
 
     def tariffssum(self):
         tarsum = Assignments.objects.filter(customerid=self.id).aggregate(Sum('tariff_value'))
+        print(tarsum)
         return tarsum['tariff_value__sum']
 
     def create_event(self):
@@ -122,11 +123,11 @@ class Customers(models.Model):
 
 
 class Assignments(models.Model):
-    tariffid = models.IntegerField()
+    # tariffid = models.IntegerField()
     tariff = models.ForeignKey(Tariffs, related_name='assigmentstariffs', on_delete=models.CASCADE, db_column='tariffid')
     liabilityid = models.IntegerField()
     customer = models.ForeignKey(Customers, related_name='custtariffs', on_delete=models.CASCADE, db_column='customerid')
-    customerid = models.IntegerField()
+    # customerid = models.IntegerField()
     period = models.SmallIntegerField()
     at = models.IntegerField()
     datefrom = models.IntegerField()
@@ -139,7 +140,7 @@ class Assignments(models.Model):
     numberplanid = models.IntegerField(blank=True, null=True)
 
     def tariff_value(self):
-        tar = Tariffs.objects.get(id=self.tariffid).value
+        tar = Tariffs.objects.get(id=self.tariff_id).value
         return tar
 
     def __str__(self):
