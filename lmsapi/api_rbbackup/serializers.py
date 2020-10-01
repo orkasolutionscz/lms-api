@@ -10,7 +10,7 @@ class RouterTypeSerializer(serializers.ModelSerializer):
 
 
 class RouterSerializer(serializers.ModelSerializer):
-    dev_type = RouterTypeSerializer(read_only=True, many=True)
+    # dev_type = RouterTypeSerializer(read_only=True, many=True)
 
     class Meta:
         model = Routers

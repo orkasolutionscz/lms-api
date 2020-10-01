@@ -1,28 +1,43 @@
 from rest_framework import serializers
-from .models import Customers, Assignments
+from .models import Customers, Customercontacts, Customergroups, Assignments, Tariffs
 
 
 class AssignmentsSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Assignments
-        fields = ('customer', 'tariff', 'datefrom', 'dateto', 'invoice', 'tariff_value')
-        depth = 1
+        fields = '__all__'
+
+
+class TariffsSerializer(serializers.ModelSerializer):
+
+    tariffs = AssignmentsSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Tariffs
+        fields = '__all__'
+
+
+class CustomerContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Customercontacts
+        fields = ('name', 'phone')
+
+
+class CustomerGroupSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Customergroups
+        fields = ('name', 'description')
 
 
 class CustomerSerializer(serializers.ModelSerializer):
-    kontakty = serializers.StringRelatedField(many=True)
-    skupiny = serializers.StringRelatedField(many=True)
-    custtariffs = serializers.StringRelatedField(many=True)
+
+    assigments = AssignmentsSerializer(read_only=True, many=True)
+    kontakty = CustomerContactSerializer(read_only=True, many=True)
+    cust_skupiny = CustomerGroupSerializer(read_only=True, many=True)
 
     class Meta:
         model = Customers
-        depth = 1
-        fields = (
-            'id', 'full_name', 'status', 'kontakty',
-            'address', 'zip', 'city',
-            'info', 'notes',
-            'message', 'deposit',
-            'depositdate_asstring', 'sendinvoice', 'modify_event', 'create_event',
-            'skupiny', 'balance', 'custtariffs',
-            'is_executed', 'lease_antena', 'lease_iptv', 'block_state'
-        )
+        fields = '__all__'

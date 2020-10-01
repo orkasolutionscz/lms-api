@@ -105,10 +105,10 @@ class Customers(models.Model):
         balance = Cash.objects.filter(customerid=self.id).aggregate(Sum('value'))
         return balance['value__sum']
 
-    def tariffssum(self):
-        tarsum = Assignments.objects.filter(customerid=self.id).aggregate(Sum('tariff_value'))
-        print(tarsum)
-        return tarsum['tariff_value__sum']
+    # def tariffssum(self):
+    #     tarsum = Assignments.objects.filter(customerid=self.id).aggregate(Sum('tariff_value'))
+    #     print(tarsum)
+    #     return tarsum['tariff_value__sum']
 
     def create_event(self):
         if self.creatorid > 0:
@@ -124,9 +124,9 @@ class Customers(models.Model):
 
 class Assignments(models.Model):
     # tariffid = models.IntegerField()
-    tariff = models.ForeignKey(Tariffs, related_name='assigmentstariffs', on_delete=models.CASCADE, db_column='tariffid')
+    tariff = models.ForeignKey(Tariffs, related_name='tariffs', on_delete=models.CASCADE, db_column='tariffid')
     liabilityid = models.IntegerField()
-    customer = models.ForeignKey(Customers, related_name='custtariffs', on_delete=models.CASCADE, db_column='customerid')
+    customer = models.ForeignKey(Customers, related_name='assigments', on_delete=models.CASCADE, db_column='customerid')
     # customerid = models.IntegerField()
     period = models.SmallIntegerField()
     at = models.IntegerField()
@@ -167,7 +167,7 @@ class Customercontacts(models.Model):
 class Customergroups(models.Model):
     name = models.CharField(unique=True, max_length=255)
     description = models.TextField()
-    members = models.ManyToManyField(Customers, through='customerassignments',
+    members = models.ManyToManyField(Customers, related_name='cust_skupiny', through='customerassignments',
                                      through_fields=('customergroups', 'customer'))
 
     def __str__(self):
