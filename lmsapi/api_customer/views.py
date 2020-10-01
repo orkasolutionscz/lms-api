@@ -1,42 +1,32 @@
 from .serializers import CustomerSerializer, AssignmentsSerializer
 from .models import Customers, Assignments
-from core.views import BaseLmsApiAttrViewSet
-from core.pagination import CustomLimitPagination
-
+from core.views import BaseViewSet
 
 lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platbách za minulá období.'
 
 
-class CustomersAllShowAPIView(BaseLmsApiAttrViewSet):
+class CustomersViewSet(BaseViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(deleted=0).order_by('id')
 
 
-class CustomerBlockedShowAPIView(BaseLmsApiAttrViewSet):
+class CustomerBlockedViewSet(BaseViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(message=lms_block_msg_user).filter(deleted=0).filter(is_executed=0).order_by('id')
-    pagination_class = CustomLimitPagination
 
 
-class CustomerExecutedShowAPIView(BaseLmsApiAttrViewSet):
+class CustomerExecutedViewSet(BaseViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(is_executed=1).filter(deleted=0).order_by('id')
-    pagination_class = CustomLimitPagination
 
 
-class CustomerDluhyShowAPIView(BaseLmsApiAttrViewSet):
+"""
+class CustomerDluhyViewSet(BaseViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.raw('select * from customers where is_executed=0 and deleted=0 and balance < 0')
-    pagination_class = CustomLimitPagination
+"""
 
 
-class CustomersPagesShowAPIView(BaseLmsApiAttrViewSet):
-    serializer_class = CustomerSerializer
-    queryset = Customers.objects.filter(deleted=0).order_by('id')
-    pagination_class = CustomLimitPagination
-
-
-class AssignmentsPagesShowAPIView(BaseLmsApiAttrViewSet):
+class AssignmentsViewSet(BaseViewSet):
     serializer_class = AssignmentsSerializer
     queryset = Assignments.objects.all()
-    pagination_class = CustomLimitPagination

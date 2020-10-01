@@ -1,19 +1,15 @@
 from .serializers import NodesSerializer, MacsSerializer
 from .models import Nodes, Macs
-from core.views import BaseLmsApiAttrViewSet
-from core.pagination import CustomLimitPagination
+from core.views import BaseViewSet
 
 
-class NodeViewSet(BaseLmsApiAttrViewSet):
+class NodeViewSet(BaseViewSet):
     """Manage Nodes in the database"""
     queryset = Nodes.objects.all().order_by('ownerid')
     serializer_class = NodesSerializer
-    pagination_class = CustomLimitPagination
-    filter_fields = ['ownerid']
 
 
-class MacsViewSet(BaseLmsApiAttrViewSet):
+class MacsViewSet(BaseViewSet):
     """Manage Nodes in the database"""
     queryset = Macs.objects.all()
     serializer_class = MacsSerializer
-    pagination_class = CustomLimitPagination
