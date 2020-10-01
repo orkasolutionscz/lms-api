@@ -17,9 +17,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # environ.Env.read_env()  # reading .env file
 
 import os
-from celery.schedules import crontab
-
-import core.tasks
+# from celery.schedules import crontab
+#
+# import core.tasks
 
 
 # Build paths inside the lmsapi like this: os.path.join(BASE_DIR, ...)
@@ -50,14 +50,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
-    'api_customer.apps.ApiConfig',
-    'api_nodes.apps.ApiNodesConfig',
-    'api_netdevice.apps.ApiNetdeviceConfig',
-    'api_cash.apps.ApiCashConfig',
-    'api_user.apps.ApiUserConfig',
-    'api_rbbackup.apps.ApiRbbackupConfig',
-    'celery',
-    'django_celery_results',
+    'api_customer',
+    'api_nodes',
+    'api_netdevice',
+    'api_cash',
+    'api_user',
+    'api_rbbackup',
     'core',
 ]
 
@@ -189,17 +187,17 @@ CORS_ORIGIN_ALLOW_ALL = True
 # )
 
 # Celery
-CELERY_BROKER_URL = "redis://redis:6379"
+# CELERY_BROKER_URL = "redis://redis:6379"
 # CELERY_RESULT_BACKEND = "redis://redis:6379"
-CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_RESULT_BACKEND = 'django-db'
 
-CELERY_BEAT_SCHEDULE = {
-    "export_pohoda_task": {
-        "task": "core.tasks.export_pohoda_adresy_add",
-        "schedule": crontab(minute="*/1"),
-    },
-}
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-DEFAULT_FROM_EMAIL = "noreply@email.com"
-ADMINS = [("testuser", "jirka.fait@gmail.com"), ]
+# CELERY_BEAT_SCHEDULE = {
+#     "export_pohoda_task": {
+#         "task": "core.tasks.export_pohoda_adresy_add",
+#         "schedule": crontab(minute="*/1"),
+#     },
+# }
+#
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# DEFAULT_FROM_EMAIL = "noreply@email.com"
+# ADMINS = [("testuser", "jirka.fait@gmail.com"), ]
