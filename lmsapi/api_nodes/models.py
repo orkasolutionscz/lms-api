@@ -1,12 +1,14 @@
 from django.db import models
 
 
+
 class Nodes(models.Model):
     name = models.CharField(unique=True, max_length=32)
     ipaddr = models.PositiveIntegerField(unique=True)
     ipaddr_pub = models.PositiveIntegerField()
     passwd = models.CharField(max_length=32)
-    ownerid = models.IntegerField()
+    # ownerid = models.IntegerField()
+    owner = models.ForeignKey('api_customer.customers', related_name='cust_nodes', on_delete=models.CASCADE, db_column='ownerid')
     creationdate = models.IntegerField()
     moddate = models.IntegerField()
     creatorid = models.IntegerField()
@@ -27,6 +29,9 @@ class Nodes(models.Model):
     linkspeed = models.IntegerField()
     kod_adm = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         managed = False
         db_table = 'nodes'
@@ -43,4 +48,3 @@ class Macs(models.Model):
         managed = False
         db_table = 'macs'
         unique_together = (('mac', 'nodeid'),)
-

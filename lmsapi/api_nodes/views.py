@@ -5,7 +5,7 @@ from core.views import BaseViewSet
 
 class NodeViewSet(BaseViewSet):
     """Manage Nodes in the database"""
-    queryset = Nodes.objects.all().order_by('ownerid')
+    queryset = Nodes.objects.all()
     serializer_class = NodesSerializer
 
 
