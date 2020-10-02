@@ -18,7 +18,7 @@ class Routers(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True, blank=True, null=True)
     lastbackup = models.DateTimeField(blank=True, null=True)
-    sleeptime = models.SmallIntegerField()
+    sleeptime = models.SmallIntegerField(default=0)
     isActivated = models.BooleanField(default=False)
     devtype = models.ForeignKey(RoutersType, related_name='dev_type', on_delete=models.CASCADE, default='1')
 
