@@ -6,6 +6,7 @@ from core.views import BaseViewSet
 class RouterViewSet(BaseViewSet):
     queryset = Routers.objects.all()
     serializer_class = RouterSerializer
+    filter_fields = ['addr']
 
 
 class RouterTypeViewSet(BaseViewSet):
