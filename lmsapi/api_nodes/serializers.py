@@ -18,7 +18,6 @@ class MacsSerializer(serializers.ModelSerializer):
 
 
 class IpHistorySerializer(serializers.ModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name="iphistory-detail")
 
     class Meta:
         model = BtIphistory
