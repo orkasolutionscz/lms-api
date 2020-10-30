@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Nodes, Macs
+from .models import Nodes, Macs, BtIphistory
 
 
 class NodesSerializer(serializers.ModelSerializer):
@@ -15,3 +15,11 @@ class MacsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Macs
         fields = '__all__'
+
+
+class IpHistorySerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name="iphistory-detail")
+
+    class Meta:
+        model = BtIphistory
+        fields = ('id', 'ip', 'url', 'iptext', 'cid', 'typ', 'uzivatel', 'datum')

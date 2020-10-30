@@ -1,5 +1,5 @@
 from django.db import models
-
+import netaddr
 
 
 class Nodes(models.Model):
@@ -48,3 +48,23 @@ class Macs(models.Model):
         managed = False
         db_table = 'macs'
         unique_together = (('mac', 'nodeid'),)
+
+
+class BtIphistory(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    ip = models.IntegerField(db_column='IP', blank=True, null=True)  # Field name made lowercase.
+    cid = models.IntegerField(db_column='CID', blank=True, null=True)  # Field name made lowercase.
+    typ = models.CharField(db_column='TYP', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    uzivatel = models.TextField(db_column='UZIVATEL', blank=True, null=True)  # Field name made lowercase.
+    datum = models.DateTimeField(db_column='DATUM', blank=True, null=True)  # Field name made lowercase.
+
+    def iptext(self):
+        return str(netaddr.IPAddress(self.ip))
+
+    def __str__(self):
+        return self.iptext()
+
+    class Meta:
+        managed = False
+        db_table = 'bt_iphistory'
+
