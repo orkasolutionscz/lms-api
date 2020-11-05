@@ -5,9 +5,6 @@ ENV APP_HOME /usr/src/app
 RUN mkdir -p $APP_HOME
 # set work directory
 WORKDIR $APP_HOME
-RUN mkdir static
-RUN mkdir media
-RUN mkdir gstatic
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1

@@ -5,7 +5,7 @@ volumes:
   media-volume:
 
 services:
-  web:
+  api:
     build: lmsapi
     expose:
       - 8000
