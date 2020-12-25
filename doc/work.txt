@@ -1,0 +1,1 @@
+SELECT customerid, sum((select tariffs.value from tariffs where tariffs.id = tariffid)) as sumtariffs FROM `assignments` where assignments.dateto = 0 group by customerid
