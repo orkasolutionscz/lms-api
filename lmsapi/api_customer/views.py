@@ -1,5 +1,5 @@
-from .serializers import CustomerSerializer, AssignmentsSerializer
-from .models import Customers, Assignments
+from .serializers import CustomerSerializer, AssignmentsSerializer, TariffsSerializer
+from .models import Customers, Assignments, Tariffs
 from core.views import BaseViewSet
 
 lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platbách za minulá období.'
@@ -30,3 +30,9 @@ class CustomerDluhyViewSet(BaseViewSet):
 class AssignmentsViewSet(BaseViewSet):
     serializer_class = AssignmentsSerializer
     queryset = Assignments.objects.all()
+
+
+class TariffsAllViewSet(BaseViewSet):
+    serializer_class = TariffsSerializer
+    queryset = Tariffs.objects.all()
+

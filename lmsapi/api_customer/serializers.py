@@ -10,11 +10,11 @@ class AssignmentsSerializer(serializers.ModelSerializer):
 
 
 class TariffsSerializer(serializers.ModelSerializer):
-    tariffs = AssignmentsSerializer(read_only=True, many=True)
+    tariffs = AssignmentsSerializer(read_only=True, many=True )
 
     class Meta:
         model = Tariffs
-        fields = '__all__'
+        fields = ('name', 'type', 'value', 'tariffs')
 
 
 class CustomerContactSerializer(serializers.ModelSerializer):
