@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from .api_router import router
+from api_rbbackup import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', obtain_auth_token),
     path('api/', include(router.urls)),
+    path('routerServices/findRouter/', views.find_router)
 ]
 
 """
