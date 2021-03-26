@@ -10,9 +10,9 @@ class RouterTypeSerializer(serializers.ModelSerializer):
 
 
 class RouterSerializer(serializers.ModelSerializer):
-    # dev_type = RouterTypeSerializer(read_only=True, many=True)
+    router_type = RouterTypeSerializer(read_only=True, many=True)
 
     class Meta:
         model = Routers
-        fields = ('__all__')
+        fields = '__all__'
         read_only_fields = ('created', )

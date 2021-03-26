@@ -20,10 +20,7 @@ class Routers(models.Model):
     lastbackup = models.DateTimeField(blank=True, null=True)
     sleeptime = models.SmallIntegerField(default=0)
     isActivated = models.BooleanField(default=False)
-    devtype = models.ForeignKey(RoutersType, related_name='dev_type', on_delete=models.CASCADE, default='1')
-
-    def __str__(self):
-        return '{}:{}'.format(self.addr, self.port)
+    devtype = models.ForeignKey(RoutersType, related_name='router_type', on_delete=models.CASCADE, default='1')
 
     class Meta:
         db_table = 'routers'

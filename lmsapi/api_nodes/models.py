@@ -8,7 +8,7 @@ class Nodes(models.Model):
     ipaddr_pub = models.PositiveIntegerField()
     passwd = models.CharField(max_length=32)
     # ownerid = models.IntegerField()
-    owner = models.ForeignKey('api_customer.customers', related_name='cust_nodes', on_delete=models.CASCADE, db_column='ownerid')
+    owner = models.ForeignKey('api_customer.customers', related_name='owner', on_delete=models.CASCADE, db_column='ownerid')
     creationdate = models.IntegerField()
     moddate = models.IntegerField()
     creatorid = models.IntegerField()
