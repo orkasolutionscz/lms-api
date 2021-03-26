@@ -7,3 +7,4 @@ mysqlclient
 netaddr
 pymysql
 gunicorn
+flake8>=3.6.0,<3.7.0
