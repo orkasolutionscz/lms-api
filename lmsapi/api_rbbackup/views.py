@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 @api_view(['POST'])
 def find_router(request):
     routers = Routers.objects.filter(addr=request.data['addr'])
-    serializer = RouterSerializer(routers,many=True)
+    serializer = RouterSerializer(routers, many=True)
     return Response(serializer.data)
 
 
@@ -20,4 +20,3 @@ class RouterViewSet(BaseViewSet):
 class RouterTypeViewSet(BaseViewSet):
     queryset = RoutersType.objects.all()
     serializer_class = RouterTypeSerializer
-
