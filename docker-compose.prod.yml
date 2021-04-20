@@ -17,7 +17,7 @@ services:
       - ./lmsapi/:/usr/src/app/
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
-
+    restart: always
 
 networks:
   default:
