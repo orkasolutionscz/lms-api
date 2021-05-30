@@ -20,6 +20,7 @@ class Routers(models.Model):
     lastbackup = models.DateTimeField(blank=True, null=True)
     sleeptime = models.SmallIntegerField(default=0)
     isActivated = models.BooleanField(default=False)
+    dev_info = models.TextField(blank=True)
     devtype = models.ForeignKey(RoutersType, related_name='router_type', on_delete=models.CASCADE, default='1')
 
     class Meta:
@@ -28,3 +29,17 @@ class Routers(models.Model):
     def __str__(self):
         return self.addr + '/' + self.port
 
+
+class RouterBackups(models.Model):
+    dev_id = models.ForeignKey(Routers, related_name='router_backups', on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    file_name = models.CharField(max_length=500)
+    type = models.CharField(max_length=15)
+    file_ext = models.CharField(max_length=15, blank=True, null=True)
+    time_backup = models.DecimalField(default=0, max_digits=6, decimal_places=1)
+
+    class Meta:
+        db_table = 'routers_backups'
+
+    def __str__(self):
+        return f'{self.date} - {self.file_name}'
