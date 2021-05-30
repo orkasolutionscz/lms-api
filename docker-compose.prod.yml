@@ -14,7 +14,6 @@ services:
     env_file:
       - ./.env.prod
     volumes:
-      - ./lmsapi/:/usr/src/app/
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
     restart: always
