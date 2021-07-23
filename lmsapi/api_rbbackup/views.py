@@ -1,6 +1,6 @@
 from .models import Routers, RoutersType
 from .serializers import RouterSerializer, RouterTypeSerializer
-from core.views import BaseViewSet
+from core.views import BaseViewSet, PrimaryViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -11,10 +11,9 @@ def find_router(request):
     return Response(serializer.data)
 
 
-class RouterViewSet(BaseViewSet):
+class RouterViewSet(PrimaryViewSet):
     queryset = Routers.objects.all()
     serializer_class = RouterSerializer
-    filter_fields = ['addr', 'devtype', 'isActivated']
 
 
 class RouterTypeViewSet(BaseViewSet):

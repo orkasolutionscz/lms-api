@@ -5,7 +5,12 @@ from url_filter.integrations.drf import DjangoFilterBackend
 from .pagination import CustomLimitPagination
 
 
-class BaseViewSet(viewsets.ModelViewSet):
+class PrimaryViewSet(viewsets.ModelViewSet):
+    """Base viewset for user owned recipe attributes"""
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated, DjangoModelPermissions)
+
+class BaseViewSet(PrimaryViewSet):
     """Base viewset for user owned recipe attributes"""
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated, DjangoModelPermissions)
