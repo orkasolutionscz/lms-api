@@ -7,7 +7,7 @@ lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platb
 
 class CustomersAllViewSet(PrimaryViewSet):
     serializer_class = CustomerSerializer
-    queryset = Customers.objects.order_by('id')
+    queryset = Customers.objects.all()
 
 
 class CustomersViewSet(BaseViewSet):
