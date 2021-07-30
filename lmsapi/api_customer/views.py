@@ -1,8 +1,13 @@
 from .serializers import CustomerSerializer, AssignmentsSerializer, TariffsSerializer
 from .models import Customers, Assignments, Tariffs
-from core.views import BaseViewSet
+from core.views import BaseViewSet, PrimaryViewSet
 
 lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platbách za minulá období.'
+
+
+class CustomersAllViewSet(PrimaryViewSet):
+    serializer_class = CustomerSerializer
+    queryset = Customers.objects.order_by('id')
 
 
 class CustomersViewSet(BaseViewSet):
