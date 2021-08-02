@@ -44,3 +44,18 @@ class CustomerSerializer(serializers.ModelSerializer):
         # fields = '__all__'
         exclude = ['divisionid', 'cutoffstop', 'paytime', 'paytype', 'creationdate',
                    'creatorid', 'moddate', 'modid']
+
+
+class CustomersSerializer(serializers.ModelSerializer):
+    kontakty = CustomerContactSerializer(read_only=True, many=True)
+    cust_skupiny = CustomerGroupSerializer(read_only=True, many=True)
+    cele_jmeno = serializers.CharField(source="full_name")
+    cust_finance = serializers.DecimalField(source="balance", max_digits=10, decimal_places=0)
+    mod_info = serializers.CharField(source="modify_event")
+    crea_info = serializers.CharField(source="create_event")
+
+    class Meta:
+        model = Customers
+        # fields = '__all__'
+        exclude = ['divisionid', 'cutoffstop', 'paytime', 'paytype', 'creationdate',
+                   'creatorid', 'moddate', 'modid']

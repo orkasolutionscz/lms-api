@@ -1,4 +1,4 @@
-from .serializers import CustomerSerializer, AssignmentsSerializer, TariffsSerializer
+from .serializers import CustomerSerializer, AssignmentsSerializer, TariffsSerializer, CustomersSerializer
 from .models import Customers, Assignments, Tariffs
 from core.views import BaseViewSet, PrimaryViewSet
 
@@ -6,7 +6,7 @@ lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platb
 
 
 class CustomersAllViewSet(PrimaryViewSet):
-    serializer_class = CustomerSerializer
+    serializer_class = CustomersSerializer
     queryset = Customers.objects.all()
 
 
