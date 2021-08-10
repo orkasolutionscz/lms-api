@@ -10,9 +10,8 @@ class PrimaryViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated, DjangoModelPermissions)
 
+
 class BaseViewSet(PrimaryViewSet):
     """Base viewset for user owned recipe attributes"""
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated, DjangoModelPermissions)
     filter_backends = [DjangoFilterBackend]
     pagination_class = CustomLimitPagination
