@@ -6,6 +6,7 @@ class RoutersType(models.Model):
 
     class Meta:
         db_table = 'routerstype'
+        ordering = ['type']
 
     def __str__(self):
         return self.type
