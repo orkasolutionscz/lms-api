@@ -1,10 +1,10 @@
 from api_rbbackup import models
 from api_rbbackup import serializers
 
-from core.views import PrimaryViewSet
+from core.views import BaseViewSet
 
 
-class RouterViewSet(PrimaryViewSet):
+class RouterViewSet(BaseViewSet):
     """Manage Router v databazi"""
     queryset = models.Routers.objects.all()
     serializer_class = serializers.RouterSerializer
@@ -22,6 +22,6 @@ class RouterViewSet(PrimaryViewSet):
         return self.serializer_class
 
 
-class RouterTypeViewSet(PrimaryViewSet):
+class RouterTypeViewSet(BaseViewSet):
     queryset = models.RoutersType.objects.all()
     serializer_class = serializers.RouterTypeSerializer
