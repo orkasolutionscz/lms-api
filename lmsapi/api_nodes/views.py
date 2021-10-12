@@ -23,20 +23,20 @@ class IpHistoryViewSet(BaseViewSet):
     """
     queryset = BtIphistory.objects.all()
     serializer_class = IpHistorySerializer
-    filter_fields = ['ip', 'cid']
+    filter_fields = ['ip', 'iptext', 'cid']
 
-    def get_queryset(self):
-        """
-        Optionally restricts the returned purchases to a given user,
-        by filtering against a `username` query parameter in the URL.
-        """
-        queryset = BtIphistory.objects.order_by('-datum')
-        ip = self.request.query_params.get('ip', None)
-        cid = self.request.query_params.get('cid', None)
-        if ip:
-            ip = iptools.validIP(ip)
-            queryset = queryset.filter(ip=ip)
-        elif cid:
-            queryset = queryset.filter(cid=cid)
-
-        return queryset
+    # def get_queryset(self):
+    #     """
+    #     Optionally restricts the returned purchases to a given user,
+    #     by filtering against a `username` query parameter in the URL.
+    #     """
+    #     queryset = BtIphistory.objects.order_by('-datum')
+    #     ip = self.request.query_params.get('ip', None)
+    #     cid = self.request.query_params.get('cid', None)
+    #     if ip:
+    #         ip = iptools.validIP(ip)
+    #         queryset = queryset.filter(ip=ip)
+    #     elif cid:
+    #         queryset = queryset.filter(cid=cid)
+    #
+    #     return queryset
