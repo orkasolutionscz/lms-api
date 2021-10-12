@@ -3,7 +3,6 @@ from .models import Nodes, Macs, BtIphistory
 
 
 class MacsSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Macs
         fields = '__all__'
@@ -17,9 +16,7 @@ class NodesSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class IpHistorySerializer(serializers.ModelSerializer):
-
     class Meta:
         model = BtIphistory
         fields = ('id', 'ip', 'url', 'iptext', 'cid', 'typ', 'uzivatel', 'datum')
