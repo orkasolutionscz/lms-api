@@ -20,10 +20,10 @@ class IpHistoryViewSet(BaseViewSet):
     """
     Parametry pro vybery:
     ip - format 192.168.1.0 nebo 123456789
-    customer - id usera
     """
     queryset = BtIphistory.objects.all()
     serializer_class = IpHistorySerializer
+    filter_fields = ['ip',]
 
     def get_queryset(self):
         """
@@ -35,11 +35,7 @@ class IpHistoryViewSet(BaseViewSet):
         if ip:
             ip = iptools.validIP(ip)
 
-        customer = self.request.query_params.get('customer', None)
-
         if ip is not None:
             queryset = queryset.filter(ip=ip)
-        elif customer is not None:
-            queryset = queryset.filter(cid=customer)
 
         return queryset
