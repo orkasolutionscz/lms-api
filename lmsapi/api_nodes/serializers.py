@@ -19,4 +19,4 @@ class NodesSerializer(serializers.ModelSerializer):
 class IpHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BtIphistory
-        fields = ('id', 'ip', 'url', 'iptext', 'cid', 'typ', 'uzivatel', 'datum')
+        fields = '__all__'
