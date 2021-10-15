@@ -31,13 +31,13 @@ class IpHistoryViewSet(generics.ListAPIView):
         Optionally restricts the returned purchases to a given user,
         by filtering against a `username` query parameter in the URL.
         """
-        # queryset = BtIphistory.objects.order_by('-datum')
+        queryset = BtIphistory.objects.all()
         p_ip = self.request.query_params.get('ip', None)
         p_cid = self.request.query_params.get('cid', None)
         if p_ip:
             par_ip = iptools.validIP(p_ip)
             print(f'queryset filter ip={par_ip}')
-            queryset = BtIphistory.objects.filter(ip=par_ip).order_by('-datum')
+            queryset = queryset.filter(ip=par_ip).order_by('-datum')
         elif p_cid:
-            queryset = BtIphistory.objects.filter(cid=p_cid).order_by('-datum')
+            queryset = queryset.filter(cid=p_cid).order_by('-datum')
         return queryset
