@@ -31,12 +31,13 @@ class IpHistoryViewSet(BaseViewSet):
         by filtering against a `username` query parameter in the URL.
         """
         queryset = BtIphistory.objects.order_by('-datum')
-        ip = self.request.query_params.get('ip', None)
-        cid = self.request.query_params.get('cid', None)
-        if ip:
-            ip = iptools.validIP(ip)
-            queryset = queryset.filter(ip=ip)
-        elif cid:
-            queryset = queryset.filter(cid=cid)
+        p_ip = self.request.query_params.get('ip', None)
+        p_cid = self.request.query_params.get('cid', None)
+        if p_ip:
+            par_ip = iptools.validIP(p_ip)
+            print(f'queryset filter ip={par_ip}')
+            queryset = queryset.filter(ip=par_ip)
+        elif p_cid:
+            queryset = queryset.filter(cid=p_cid)
 
         return queryset

@@ -16,7 +16,7 @@ def validIP(address):
             if not 0 <= int(item) <= 255:
                 return None
         ip_int = int(ipaddress.ip_address(address))
-        print(f'{address} na {ip_int}')
+        print(f'iptools prevedlo {address} na {ip_int}')
         return ip_int
     except:
         return None
