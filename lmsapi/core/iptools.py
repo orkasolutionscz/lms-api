@@ -15,6 +15,8 @@ def validIP(address):
         for item in parts:
             if not 0 <= int(item) <= 255:
                 return None
-        return int(ipaddress.ip_address(address))
+        ip_int = int(ipaddress.ip_address(address))
+        print(f'{address} na {ip_int}')
+        return ip_int
     except:
         return None
