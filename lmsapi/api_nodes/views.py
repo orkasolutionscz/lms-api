@@ -17,7 +17,7 @@ class MacsViewSet(BaseViewSet):
     serializer_class = MacsSerializer
 
 
-class IpHistoryViewSet(generics.ListAPIView):
+class IpHistoryViewSet(BaseViewSet):
     """
     Parametry pro vybery:
     ip - format 192.168.1.0 nebo 123456789
