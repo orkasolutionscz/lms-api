@@ -22,7 +22,7 @@ class IpHistoryViewSet(generics.ListAPIView):
     Parametry pro vybery:
     ip - format 192.168.1.0 nebo 123456789
     """
-    # queryset = BtIphistory.objects.all()
+    queryset = BtIphistory.objects.all()
     serializer_class = IpHistorySerializer
     # filter_fields = ['ip', 'cid', 'typ']
 
