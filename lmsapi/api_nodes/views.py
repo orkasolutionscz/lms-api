@@ -21,7 +21,7 @@ class IpHistoryViewSet(BaseViewSet):
     Parametry pro vybery:
     ip - format 192.168.1.0 nebo 123456789
     """
-    queryset = BtIphistory.objects.all()
+    # queryset = BtIphistory.objects.all()
     serializer_class = IpHistorySerializer
     filter_fields = ['ip', 'cid', 'typ']
 
@@ -30,14 +30,12 @@ class IpHistoryViewSet(BaseViewSet):
         Optionally restricts the returned purchases to a given user,
         by filtering against a `username` query parameter in the URL.
         """
-        queryset = BtIphistory.objects.order_by('-datum')
+        # queryset = BtIphistory.objects.order_by('-datum')
         p_ip = self.request.query_params.get('ip', None)
         p_cid = self.request.query_params.get('cid', None)
         if p_ip:
             par_ip = iptools.validIP(p_ip)
             print(f'queryset filter ip={par_ip}')
-            queryset = queryset.filter(ip=par_ip)
+            return BtIphistory.objects.filter(ip=par_ip).order_by('-datum')
         elif p_cid:
-            queryset = queryset.filter(cid=p_cid)
-
-        return queryset
+            return BtIphistory.objects.filter(cid=p_cid).order_by('-datum')
