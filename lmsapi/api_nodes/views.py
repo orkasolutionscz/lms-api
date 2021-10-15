@@ -36,6 +36,7 @@ class IpHistoryViewSet(BaseViewSet):
         if p_ip:
             par_ip = iptools.validIP(p_ip)
             print(f'queryset filter ip={par_ip}')
-            return BtIphistory.objects.filter(ip=par_ip).order_by('-datum')
+            queryset = BtIphistory.objects.filter(ip=par_ip).order_by('-datum')
         elif p_cid:
-            return BtIphistory.objects.filter(cid=p_cid).order_by('-datum')
+            queryset = BtIphistory.objects.filter(cid=p_cid).order_by('-datum')
+        return queryset
