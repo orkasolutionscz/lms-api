@@ -2,8 +2,7 @@ from .serializers import NodesSerializer, MacsSerializer, IpHistorySerializer
 from .models import Nodes, Macs, BtIphistory
 from core.views import BaseViewSet
 import core.iptools as iptools
-from rest_framework import generics
-
+import ipaddress
 
 class NodeViewSet(BaseViewSet):
     """Manage Nodes in the database"""
@@ -40,6 +39,6 @@ class IpHistoryViewSet(BaseViewSet):
         elif p_cid:
             queryset = queryset.filter(cid=p_cid).order_by('-datum')
         elif p_iptext:
-            par_ip = iptools.validIP(p_iptext)
+            par_ip = ipaddress.ip_address(p_iptext)
             queryset = queryset.filter(ip=par_ip).order_by('-datum')
         return queryset
