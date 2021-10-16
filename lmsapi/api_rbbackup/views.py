@@ -6,10 +6,9 @@ from core.views import BaseViewSet
 
 class RouterViewSet(BaseViewSet):
     """Manage Router v databazi"""
-    queryset = models.Routers.objects.all()
+    queryset = models.Routers.objects.all().order_by('addr')
     serializer_class = serializers.RouterSerializer
     filter_fields = ['addr', 'devtype', 'isActivated']
-    ordering = ['addr']
 
     def perform_create(self, serializer):
         """Vytvoreni noveho zaznamu"""
