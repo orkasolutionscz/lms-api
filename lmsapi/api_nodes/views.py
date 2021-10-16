@@ -24,7 +24,7 @@ class IpHistoryViewSet(BaseViewSet):
     """
     queryset = BtIphistory.objects.all()
     serializer_class = IpHistorySerializer
-    # filter_fields = ['ip', 'cid', 'typ']
+    filter_fields = ['ip', 'cid', 'typ']
 
     def get_queryset(self):
         """
