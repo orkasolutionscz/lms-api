@@ -33,11 +33,13 @@ class IpHistoryViewSet(BaseViewSet):
         """
         queryset = BtIphistory.objects.all()
         p_ip = self.request.query_params.get('ip', None)
+        p_iptext = self.request.query_params.get('iptext', None)
         p_cid = self.request.query_params.get('cid', None)
         if p_ip:
-            par_ip = iptools.validIP(p_ip)
-            print(f'queryset filter ip={par_ip}')
-            queryset = queryset.filter(ip=par_ip).order_by('-datum')
+            queryset = queryset.filter(ip=p_ip).order_by('-datum')
         elif p_cid:
             queryset = queryset.filter(cid=p_cid).order_by('-datum')
+        elif p_iptext:
+            par_ip = iptools.validIP(p_iptext)
+            queryset = queryset.filter(ip=par_ip).order_by('-datum')
         return queryset
