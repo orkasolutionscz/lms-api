@@ -20,5 +20,5 @@ class IpHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BtIphistory
         fields = (
-            'id', 'ip', 'cid', 'typ', 'iptext', 'datum',
+            'id', 'ip', 'cid', 'typ', 'iptext', 'datum', 'uzivatel'
         )
