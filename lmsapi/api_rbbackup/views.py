@@ -9,6 +9,7 @@ class RouterViewSet(BaseViewSet):
     queryset = models.Routers.objects.all()
     serializer_class = serializers.RouterSerializer
     filter_fields = ['addr', 'devtype', 'isActivated']
+    ordering = ['addr']
 
     def perform_create(self, serializer):
         """Vytvoreni noveho zaznamu"""
