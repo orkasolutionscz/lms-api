@@ -152,7 +152,10 @@ class Assignments(models.Model):
 
 
 class Customercontacts(models.Model):
-    customer = models.ForeignKey(Customers, related_name='kontakty', on_delete=models.CASCADE, db_column='customerid')
+    customer = models.ForeignKey(Customers,
+                                 related_name='kontakty',
+                                 on_delete=models.CASCADE,
+                                 db_column='customerid')
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
 

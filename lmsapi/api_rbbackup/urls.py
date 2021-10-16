@@ -7,8 +7,8 @@ router = DefaultRouter()
 router.register('routers', views.RouterViewSet)
 router.register('routers_type', views.RouterTypeViewSet)
 
-app_name = 'backups'
+# app_name = 'backups'
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('/', include(router.urls))
 ]

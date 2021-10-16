@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/', obtain_auth_token),
     path('api/', include(router.urls)),
     path('api/backup', include('api_rbbackup.urls')),
+    path('api/customers', include('api_customer.urls')),
 
     # path('routerServices/findRouter/', views.find_router)
 ]

@@ -5,11 +5,6 @@ from core.views import BaseViewSet, PrimaryViewSet
 lms_block_msg_user = 'Služby Vám byly omezeny z důvodu nesrovnalostí v platbách za minulá období.'
 
 
-class CustomersAllViewSet(PrimaryViewSet):
-    serializer_class = CustomersSerializer
-    queryset = Customers.objects.all()
-
-
 class CustomersViewSet(BaseViewSet):
     serializer_class = CustomerSerializer
     queryset = Customers.objects.filter(deleted=0).order_by('id')
@@ -34,10 +29,10 @@ class CustomerDluhyViewSet(BaseViewSet):
 
 class AssignmentsViewSet(BaseViewSet):
     serializer_class = AssignmentsSerializer
-    queryset = Assignments.objects.all()
+    queryset = Assignments.objects.all().order_by('id')
 
 
 class TariffsAllViewSet(BaseViewSet):
     serializer_class = TariffsSerializer
-    queryset = Tariffs.objects.all()
+    queryset = Tariffs.objects.all().order_by('id')
 
