@@ -20,10 +20,10 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
 
 # copy entrypoint.sh
-COPY ./entrypoint.sh ./entrypoint.sh
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 
 # copy lmsapi
-COPY ./ ./
+COPY . /usr/src/app/
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
