@@ -5,8 +5,9 @@ services:
     build:
       context: lmsapi
       dockerfile: Dockerfile.prod
-    expose:
-      - 8000
+    command: python manage.py runserver 0.0.0.0:8000
+    # expose:
+    #   - 8000
     env_file:
       - ./.env.prod
     volumes:
@@ -52,10 +53,10 @@ services:
       - redis
       - celery
 
-networks:
-  default:
-    external:
-      name: nginx-proxy
+# networks:
+#   default:
+#     external:
+#       name: nginx-proxy
 
 volumes:
   static-volume:
