@@ -52,10 +52,10 @@ services:
       - redis
       - celery
 
-# networks:
-#   default:
-#     external:
-#       name: nginx-proxy
+networks:
+  default:
+    external:
+      name: nginx-proxy
 
 volumes:
   static-volume:
