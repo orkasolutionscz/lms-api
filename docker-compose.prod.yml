@@ -24,7 +24,7 @@ services:
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
     env_file:
-      - ./.env
+      - ./.env.prod
     depends_on:
       - redis
 
