@@ -3,6 +3,8 @@ MAINTAINER ORKA Solutions
 ENV APP_HOME /usr/src/app
 
 RUN mkdir -p $APP_HOME
+RUN mkdir -p $APP_HOME/static
+RUN mkdir -p $APP_HOME/media
 # set work directory
 WORKDIR $APP_HOME
 

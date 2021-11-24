@@ -3,12 +3,18 @@ MAINTAINER ORKA Solutions
 ENV APP_HOME /usr/src/app
 
 RUN mkdir -p $APP_HOME
+RUN mkdir -p $APP_HOME/static
+RUN mkdir -p $APP_HOME/media
+
 # set work directory
 WORKDIR $APP_HOME
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+
+# create the app user
+# RUN addgroup -S app && adduser -S app -G app
 
 # Install dependencies
 RUN apk add --update --no-cache \
@@ -24,5 +30,9 @@ COPY ./entrypoint.prod.sh /usr/src/app/entrypoint.sh
 # copy lmsapi
 COPY ./ /usr/src/app/
 
+# chown all the files to the app user
+# RUN chown -R app:app $APP_HOME
+
+# USER app
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
