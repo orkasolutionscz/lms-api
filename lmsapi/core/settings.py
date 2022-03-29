@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'api_user',
     'api_rbbackup',
     'core',
+    'api_global',
 ]
 
 
