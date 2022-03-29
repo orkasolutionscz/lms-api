@@ -90,15 +90,15 @@ class Customers(models.Model):
         db_table = 'customers'
 
     def __str__(self):
-        return 'CID: {} {} {}'.format(self.id, self.lastname, self.name)
+        return f'CID: {self.id} {self.lastname} {self.name}'
 
     def full_name(self):
-        return '{} {}'.format(self.lastname, self.name)
+        return f'{self.lastname} {self.name}'
 
     def modify_event(self):
         if self.modid > 0:
             mod_user = LmsUsers.objects.get(id=self.modid).name
-            return '{}, {}'.format(mod_user, datetime.utcfromtimestamp(self.moddate).strftime('%Y-%m-%d %H:%m:%S'))
+            return f'{mod_user}, {datetime.utcfromtimestamp(self.moddate).strftime("%Y-%m-%d %H:%m:%S")}'
         return ''
 
     def balance(self):
