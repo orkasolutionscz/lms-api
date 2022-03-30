@@ -1,6 +1,7 @@
 Django>=3.0.0, <4.0.0
 djangorestframework
 django-cors-headers
+django-extensions
 django-filter
 django-url-filter
 mysqlclient
