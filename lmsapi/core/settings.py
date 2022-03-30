@@ -17,10 +17,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 # environ.Env.read_env()  # reading .env file
 
 import os
-from celery.schedules import crontab
-#
-import core.tasks
-
 
 # Build paths inside the lmsapi like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -178,28 +174,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 #     'http://localhost:3000',
 # )
 
-# Celery
-CELERY_BROKER_URL = "redis://redis:6379"
-CELERY_RESULT_BACKEND = "redis://redis:6379"
-# CELERY_RESULT_BACKEND = 'django-db'
-
-CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
-        "task": "core.tasks.sample_task",
-        "schedule": crontab(minute="*/1"),
-    },
-    # "send_email_report": {
-    #     "task": "core.tasks.send_email_report",
-    #     "schedule": crontab(hour="*/1"),
-    # },
-}
-# CELERY_BEAT_SCHEDULE = {
-#     "export_pohoda_task": {
-#         "task": "core.tasks.export_pohoda_adresy_add",
-#         "schedule": crontab(minute="*/1"),
-#     },
-# }
-#
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@rapidnet.cz"
 ADMINS = [("testuser", "jirka.fait@gmail.com"), ]
