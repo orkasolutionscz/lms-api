@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_extensions',
     'api_customer',
     'api_nodes',
     'api_netdevice',
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'api_user',
     'api_rbbackup',
     'core',
+    'api_global',
 ]
 
 
