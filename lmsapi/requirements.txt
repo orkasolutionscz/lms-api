@@ -1,11 +1,15 @@
 Django>=3.0.0, <4.0.0
+celery
 djangorestframework
 django-cors-headers
 django-extensions
 django-filter
+django-redis
 django-url-filter
+flower
 mysqlclient
 netaddr
 pymysql
 gunicorn
+redis
 flake8>=3.6.0,<3.7.0
