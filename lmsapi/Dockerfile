@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 
 # Install dependencies
 RUN apk add --update --no-cache \
-      mariadb-client gcc libc-dev linux-headers mariadb-dev
+      mariadb-client gcc libc-dev linux-headers mariadb-dev libffi-dev python3-dev
 
 # install dependencies
 RUN pip install --upgrade pip
