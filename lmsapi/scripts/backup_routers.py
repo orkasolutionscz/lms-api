@@ -16,7 +16,7 @@ export_file = 'mkservice_export.rsc'
 backup_file = 'mkservice_backup.backup'
 
 
-def backup_ip(ip, port):
+def backup_ip(ip, port, sleeptime):
     print(f'Budu zalohovat zarizenis IP: {ip} port: {port}')
     dest_dir = backup_folder + f'{ip}'
     os.makedirs(dest_dir, exist_ok=True)
@@ -32,9 +32,9 @@ def backup_ip(ip, port):
                        look_for_keys=False)
 
         client.exec_command(f'/export file={export_file}')
-        time.sleep(1)
+        time.sleep(sleeptime)
         client.exec_command(f'/system backup save name={backup_file}')
-        time.sleep(1)
+        time.sleep(sleeptime)
         ftp_client = client.open_sftp()
         ftp_client.get(export_file, f'{dest_dir}/{export_file}')
         ftp_client.get(backup_file, f'{dest_dir}/{backup_file}')
@@ -51,7 +51,16 @@ def run():
     for row in routers:
         ip = row.addr
         port = row.port
-        backup_ip(ip, port)
+        sleep_time = row.sleeptime
+        backup_ip(ip, port, sleep_time)
+
+
+def run_oneip(ip):
+    row = Routers.objects.get(addr=ip)
+    ip = row.addr
+    port = row.port
+    sleep_time = row.sleeptime
+    backup_ip(ip, port, sleep_time)
 
 
 if __name__ == "__main__":

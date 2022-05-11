@@ -28,7 +28,7 @@ class Routers(models.Model):
         db_table = 'routers'
 
     def __str__(self):
-        return self.addr + '/' + self.port
+        return f'{self.addr} / {self.port}'
 
 
 class RouterBackups(models.Model):
