@@ -13,6 +13,7 @@ services:
     volumes:
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
+    restart: always
 
   nginx-proxy:
     container_name: nginx-proxy
@@ -45,6 +46,7 @@ services:
       - acme:/etc/acme.sh
     depends_on:
       - nginx-proxy
+    restart: always
 
 volumes:
   static-volume:
