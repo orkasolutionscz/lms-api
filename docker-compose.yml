@@ -3,8 +3,8 @@ version: '3'
 services:
   api:
     build:
-      context: .
-      dockerfile: Dockerfile.prod
+      context: ./lmsapi
+      dockerfile: Dockerfile
     command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
