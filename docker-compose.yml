@@ -1,20 +1,21 @@
-version: '3.7'
-
+version: '3'
 
 services:
   api:
-    build: lmsapi
-    command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "8000:8000"
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
+    expose:
+      - 8000
     env_file:
-      - ./.env
+      - .env
     volumes:
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
+    restart: always
 
 volumes:
   static-volume:
-    driver: local
   media-volume:
-    driver: local
+
