@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 #
 # root = environ.Path(__file__) - 3  # get root of the project
 # env = environ.Env()
-# environ.Env.read_env()  # reading .env file
+# environ.Env.read_env()  # reading .env.dev file
 
 import os
 
@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="12354897")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = int(os.environ.get("DEBUG", default=1))
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", default=0)
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", default="localhost 127.0.0.1").split(" ")
 
@@ -161,7 +161,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # gstatic is the folder where global static files stay (they are read directly in development)
 # on development, we wont use 'static' since it is where 'collectstatic' stores all static files for production
