@@ -9,7 +9,7 @@ services:
     expose:
       - 8000
     env_file:
-      - ./.env.staging
+      - ./.env.prod
     volumes:
       - static-volume:/usr/src/app/static
       - media-volume:/usr/src/app/media
@@ -36,7 +36,7 @@ services:
   nginx-proxy-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     env_file:
-      - ./.env.staging.proxy-companion
+      - ./.env.prod.proxy-companion
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - certs:/etc/nginx/certs
