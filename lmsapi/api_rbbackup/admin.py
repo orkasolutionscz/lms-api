@@ -14,7 +14,7 @@ class RoutersTypeAdmin(admin.ModelAdmin):
 
 
 class RouterBackupsAdmin(admin.ModelAdmin):
-    list_display = ['id', 'datum', 'file_name']
+    list_display = ['id', 'dev_id', 'date', 'file_name', 'time_backup']
     search_fields = ['id', 'file_name', ]
 
 
