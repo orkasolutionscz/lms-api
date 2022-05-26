@@ -5,8 +5,8 @@ from .models import Routers, RoutersType, RouterBackups
 
 
 class RoutersAdmin(admin.ModelAdmin):
-    list_display = ['id', 'devtype', 'addr', 'port', 'lastbackup', 'identity', 'sleeptime']
-    search_fields = ['id', 'addr', ]
+    list_display = ['id', 'devtype', 'addr', 'port', 'lastbackup', 'identity', 'sleeptime', 'isActivated']
+    search_fields = ['id', 'addr', 'identity']
 
 
 class RoutersTypeAdmin(admin.ModelAdmin):
