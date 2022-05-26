@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Routers, RoutersType
+from .models import Routers, RoutersType, RouterBackups
 
 
 class RoutersAdmin(admin.ModelAdmin):
@@ -13,5 +13,11 @@ class RoutersTypeAdmin(admin.ModelAdmin):
     list_display = ['id', 'type']
 
 
+class RouterBackupsAdmin(admin.ModelAdmin):
+    list_display = ['id', 'datum', 'file_name']
+    search_fields = ['id', 'file_name', ]
+
+
 admin.site.register(Routers, RoutersAdmin)
 admin.site.register(RoutersType, RoutersTypeAdmin)
+admin.site.register(RouterBackups, RouterBackupsAdmin)
