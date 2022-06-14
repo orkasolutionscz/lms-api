@@ -13,12 +13,19 @@ class RoutersType(models.Model):
 
 
 class Routers(models.Model):
+    BACKUP_STATUS = (
+        ('N', 'Neprobehlo'),
+        ('OK', 'Uspesne'),
+        ('ERLOG', 'Neuspesne prihlaseni'),
+        ('ERDOWN', 'Chyba pri prenosu zalohy')
+    )
     addr = models.CharField(max_length=255)
     port = models.PositiveSmallIntegerField(blank=True, null=True)
     identity = models.CharField(max_length=255, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modify = models.DateTimeField(auto_now=True, blank=True, null=True)
     lastbackup = models.DateTimeField(blank=True, null=True)
+    backup_result = models.CharField( max_length=10, default='N', choices=BACKUP_STATUS)
     sleeptime = models.SmallIntegerField(default=0)
     isActivated = models.BooleanField(default=False)
     dev_info = models.TextField(blank=True)
