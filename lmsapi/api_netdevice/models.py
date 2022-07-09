@@ -44,6 +44,17 @@ class Nmsgroups(models.Model):
         db_table = 'nmsgroups'
 
 
+class Wlanmodes(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    apmode = models.CharField(max_length=32)
+    popis = models.CharField(max_length=255, blank=True, null=True)
+    nas_type = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'wlanmodes'
+
+
 class Netdevices(models.Model):
     name = models.CharField(max_length=32)
     location = models.CharField(max_length=255)
@@ -71,6 +82,7 @@ class Netdevices(models.Model):
     wlan_cipher = models.CharField(max_length=100, blank=True, null=True)
     netssid = models.CharField(max_length=32)
     con_type = models.ForeignKey(Netcontypes, on_delete=models.DO_NOTHING, db_column='con_type')
+    wlan_mode = models.ForeignKey(Wlanmodes, on_delete=models.DO_NOTHING, db_column='wlan_mode')
 
     class Meta:
         managed = False
