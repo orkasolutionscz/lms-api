@@ -24,7 +24,7 @@ class Wlanfranges(models.Model):
 
 
 class Wlanfreqs(models.Model):
-    ref_ad = models.ForeignKey(Wlanfranges, on_delete=models.DO_NOTHING, db_column='ref_ad')
+    ref_ad = models.ForeignKey(Wlanfranges, on_delete=models.DO_NOTHING, db_column='ref_ad', verbose_name='Pasmo')
     name = models.CharField(max_length=50)
     freq = models.IntegerField()
     channel = models.IntegerField()
