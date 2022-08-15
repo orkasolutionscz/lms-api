@@ -18,6 +18,7 @@ class WlanfrangesAdmin(admin.ModelAdmin):
 
 class WlanfreqsAdmin(admin.ModelAdmin):
     list_display = ['id', 'ref_ad', 'name', 'freq']
+    list_filter = ('ref_ad', )
 
 
 admin.site.register(Netcontypes, NetconTypeAdmin)
