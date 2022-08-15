@@ -11,23 +11,37 @@ class Netcontypes(models.Model):
         db_table = 'netcontypes'
 
 
+class Wlanfranges(models.Model):
+    name = models.CharField(max_length=50)
+    hide = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'wlanfranges'
+
+
+class Wlanfreqs(models.Model):
+    ref_ad = models.ForeignKey(Wlanfranges, on_delete=models.DO_NOTHING, db_column='ref_ad')
+    name = models.CharField(max_length=50)
+    freq = models.IntegerField()
+    channel = models.IntegerField()
+    note = models.CharField(max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'wlanfreqs'
+
+
 class Hwtypes(models.Model):
     vendor_id = models.IntegerField()
     name = models.CharField(unique=True, max_length=100)
     hw_profile = models.CharField(max_length=50)
     ports = models.IntegerField()
     shortname = models.CharField(max_length=10)
-    def_wlan_freq = models.IntegerField(blank=True, null=True)
+    def_wlan_freq = models.ForeignKey(Wlanfranges, on_delete=models.DO_NOTHING, db_column='def_wlan_freq')
     def_wlan_ch_width = models.IntegerField(blank=True, null=True)
     def_wlan_antenna = models.IntegerField(blank=True, null=True)
     def_wlan_polarization = models.IntegerField(blank=True, null=True)
-    oidmacvlanadr = models.CharField(max_length=100)
-    oidmacvlandescr = models.CharField(max_length=100)
-    oidmacvlanvlanid = models.CharField(max_length=100)
-    oidmacvlanstatus = models.CharField(max_length=100)
-    oidvlanid = models.CharField(max_length=100)
-    oidvlandescr = models.CharField(max_length=100)
-    oidvlanstatus = models.CharField(max_length=100)
     snmp_portconfig = models.TextField()
 
     class Meta:
